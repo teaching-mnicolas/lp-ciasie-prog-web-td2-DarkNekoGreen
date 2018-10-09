@@ -33,7 +33,7 @@ describe ("Function Name", function() {
         };
       };
       let h = g;
-      //g = 1;                // try to test without this line... //without that line h 
+      g = 1;                // try to test without this line... //without that line g is actually a function
       expect(h()).toEqual(10);  // this line throw an exception, why ?
     };
     expect(wrapper).toThrow();  // explain why it doesn't work !!!
@@ -55,7 +55,7 @@ describe ("Function Name", function() {
   });
 
   it ("is hoisted", function() {
-    let a = __;               // call f() here, even if it's not yet defined
+    let a = f();               // call f() here, even if it's not yet defined
     function f() {
       return 1;
     };
@@ -64,7 +64,7 @@ describe ("Function Name", function() {
 
   it ("is not hoisted if put in a var!", function() {
     let wrapper = function() {
-      let a = __;           // call f() here, even if it's not yet defined - it will throw an exception
+      let a = f();           // call f() here, even if it's not yet defined - it will throw an exception
       let g = function f() {
         return 1;
       };
@@ -77,7 +77,7 @@ describe ("Function Name", function() {
       let g = function f() {
         return 1;
       };
-      let a = __;         // call f() here, even if it's defined - it will throw an exception
+      let a = f();         // call f() here, even if it's defined - it will throw an exception
     };
     expect(wrapper).toThrow();
   });
