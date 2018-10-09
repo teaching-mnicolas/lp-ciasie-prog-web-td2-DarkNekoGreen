@@ -11,7 +11,7 @@ describe ("Method borrowing", function() {
 
   it ("create an array from arguments", function() {
     let f = function() {
-      let ar = Array.prototype.slice.__(__);    // apply the slice method on arguments, with the 'call' method
+      let ar = Array.prototype.slice.call();    // apply the slice method on arguments, with the 'call' method
       let a = ar.pop();
       expect(a).toEqual(2);
     };
